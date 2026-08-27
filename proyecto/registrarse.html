@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse | La Nación</title>
+    <link rel="stylesheet" href="css/registrarse.css">
+</head>
+<body>
+    <main class="container">
+        <section class="login-form">
+            <img class="login-img" src="imagenes/logo.png"
+                alt="Logo de La Nación"
+                width="100"
+                height="100">
+
+            <h1>Registrarse</h1>
+
+            <div>
+                <label for="usuario">Usuario:
+                    <input type="text" id="usuario" placeholder="Escriba su usuario">
+                </label>
+            </div>
+            <div>
+                <label for="correo">Correo:
+                    <input type="email" id="correo" placeholder="Escriba su correo">
+                </label>
+            </div>
+            <div>
+                <label for="contrasena">Contraseña:
+                    <input type="password" id="contrasena" placeholder="Ingrese su contraseña">
+                </label>
+            </div>
+            <div>
+                <label for="confirmar">Confirmar contraseña:
+                    <input type="password" id="confirmar" placeholder="Confirme su contraseña">
+                </label>
+            </div>
+
+            <p class="error-message" id="registroError">Complete todos los campos correctamente.</p>
+
+            <div><button type="button" onclick="registrarUsuario()">Registrarse</button></div>
+            <div><button type="button" class="secondary-btn" onclick="window.location.href='./login.html'">Volver</button></div>
+        </section>
+    </main>
+
+    <script>
+        function registrarUsuario() {
+            const usuario = document.getElementById('usuario').value.trim();
+            const correo = document.getElementById('correo').value.trim();
+            const contrasena = document.getElementById('contrasena').value.trim();
+            const confirmar = document.getElementById('confirmar').value.trim();
+            const error = document.getElementById('registroError');
+
+            if (usuario === '' || correo === '' || contrasena === '' || confirmar === '') {
+                error.textContent = 'Complete todos los campos.';
+                error.style.display = 'block';
+                return;
+            }
+
+            if (contrasena !== confirmar) {
+                error.textContent = 'Las contraseñas no coinciden.';
+                error.style.display = 'block';
+                return;
+            }
+
+            error.style.display = 'none';
+            alert('Registro exitoso. Ahora puede iniciar sesión.');
+            window.location.href = './login.html';
+        }
+    </script>
+</body>
+</html>
